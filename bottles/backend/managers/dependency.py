@@ -14,7 +14,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-
 import os
 import uuid
 import shutil
@@ -139,8 +138,17 @@ class DependencyManager:
                     _res = self.install(config, [_ext_dep, _dep])
                     if not _res.status:
                         return _res
-
-        for step in manifest.get("Steps"):
+        steps = manifest.get("Steps")
+        temp_steps = steps
+        for step in steps:
+            if config.Arch in step is not None:
+                steps = step.get(config.Arch)
+                break
+        for step in temp_steps:
+            if "global" in step:
+                steps.extend(step.get("global"))
+                break
+        for step in steps:
             """
             Here we execute all steps in the manifest.
             Steps are the actions performed to install the dependency.
