@@ -529,6 +529,13 @@ msgstr ""
 msgid "Report Missing Dependency"
 msgstr ""
 
+#: bottles/frontend/ui/details-dependencies.blp:84
+msgid "Show all dependencies"
+msgstr ""
+
+msgid "Show allowed dependencies"
+msgstr "Show Allowed Dependencies"
+
 #: bottles/frontend/ui/details-dependencies.blp:47
 msgid "Read Documentation."
 msgstr ""
