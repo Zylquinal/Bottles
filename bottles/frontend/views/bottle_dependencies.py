@@ -14,7 +14,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-import json
 import time
 from typing import Optional
 
@@ -149,7 +148,7 @@ class DependenciesView(Adw.Bin):
                     if dep[0] in self.config.Installed_Dependencies:
                         continue  # Do not list already installed dependencies'
 
-                    if self.config.Arch not in dep[1].get("Arch", "Unspecified") and not self.show_all:
+                    if self.config.Arch not in dep[1].get("Arch", "win32_win64") and not self.show_all:
                         # NOTE: avoid listing dependencies not supported by the bottle arch
                         continue
                     GLib.idle_add(new_dependency, dep)
